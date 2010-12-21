@@ -1,0 +1,57 @@
+BODY {
+	FONT: 13px Trebuchet, Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #FDFDFD
+}
+#login {
+	MARGIN-TOP: -200px; LEFT: 50%; MARGIN-LEFT: -316px; WIDTH: 632px; POSITION: absolute; TOP: 50%; HEIGHT: 400px
+}
+#login_panel {
+	BACKGROUND: url(../images/login_bkgnd.jpg) no-repeat 0px 0px; WIDTH: 632px; HEIGHT: 312px
+}
+#input_block {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 275px; PADDING-TOP: 75px
+}
+#btnLogon {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BACKGROUND: #ecffea; BORDER-LEFT: gray 1px solid; WIDTH: 55px; COLOR: #666; BORDER-BOTTOM: gray 1px solid; HEIGHT: 20px
+}
+#error_block P.warning {
+	PADDING-LEFT: 30px; FONT-SIZE: 11px; BACKGROUND: url(../images/exclamation_icon.gif) no-repeat 0px 0px; MARGIN: 10px 0px 30px; COLOR: #56b942
+}
+#error_block P.error {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 35px; FONT-SIZE: 11px; BACKGROUND: url(../images/error_icon.gif) no-repeat 0px 0px; MARGIN: 0px 0px 30px; COLOR: #cc0000
+}
+#error_block P.confirm {
+	PADDING-LEFT: 30px; FONT-SIZE: 11px; BACKGROUND: url(../images/confirm_password_icon.gif) no-repeat 0px 0px; MARGIN: 10px 0px; COLOR: #56b942; HEIGHT: 50px
+}
+#input_block EM {
+	DISPLAY: block; FONT-SIZE: 10px; COLOR: #999; FONT-STYLE: italic
+}
+#input_block A {
+	DISPLAY: block; FONT-SIZE: 11px; COLOR: #999; PADDING-TOP: 5px
+}
+#input_block A:hover {
+	COLOR: #000
+}
+#input_block H6 {
+	PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 13px; MARGIN: 5px 0px 0px; COLOR: #666
+}
+#input_block INPUT {
+	MARGIN: 0px 0px 10px
+}
+#input_block INPUT.txt_field {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #999 1px solid
+}
+#input_block STRONG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+#error_block {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 35px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px auto; WIDTH: 300px; PADDING-TOP: 220px
+}
+#thawte_block IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 50px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 25px
+}
+#thawte_block P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #999; PADDING-TOP: 0px
+}
+#login_copyright P {
+	CLEAR: both; PADDING-RIGHT: 40px; PADDING-LEFT: 40px; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #999; PADDING-TOP: 0px; TEXT-ALIGN: center
+}

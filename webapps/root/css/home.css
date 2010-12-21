@@ -1,0 +1,28 @@
+/* CSS Document */
+.Home{ padding:10px; }
+.Home_Nav{}
+.Home_Nav_Left{}
+.home_nav_left{ float:left; background:url(../images/conner_nav_left.png) no-repeat; width:7px; height:25px;}
+.home_nav_content{float:left; color:#1587e7;  height:21px; padding-top:2px; border-top:1px #b3daf7 solid;border-bottom:1px #b3daf7 solid}
+.home_nav_right{ float:left;background:url(../images/conner_nav_right.png) no-repeat; width:7px; height:25px;}
+
+.Home_Nav_Right{ background:url(../images/conner_nav_bg.png); height:25px;}
+.Home_Nav_Right .leftbg{color:#1587e7;padding-top:2px;}
+
+.Home_List{padding-top:10px;}
+.Home_List_Content{float:left; width:24%; margin-right:10px}
+
+.home_title_left{ background:url(../images/conner_top_left.png) no-repeat; width:5px; height:29px;}
+.home_title_bg{ background:url(../images/conner_top_bg.png) repeat-x; padding-left:5px;  height:29px; color:#00538e; font-weight:bold }
+.home_title_right{ background:url(../images/conner_top_right.png) no-repeat; width:5px; height:29px;}
+
+.Home_List_Content_Tilte .left{padding-top:4px;}
+.Home_List_Content_Tilte .right{padding-top:2px;}
+
+.Home_List_Content_Tilte .right table{width:65px; height:20px;}
+.Home_List_Content_Tilte .right td{text-align:center}
+
+.Home_List_Content_Data{border-left:1px #9fbbd6 solid;border-right:1px #9fbbd6 solid;}
+
+.Home_List_Content_Bottom{ background:url(../images/conner_bottom_bg.png) bottom repeat-x; height:9px;}
+

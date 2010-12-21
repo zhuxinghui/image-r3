@@ -1,0 +1,93 @@
+/* CSS Document */
+html{
+margin:0;
+padding:0;
+font-size:11px;
+color:#333;
+height:100%;
+FONT-FAMILY: Arial, Helvetica, sans-serif;
+BACKGROUND-POSITION: left top;
+BACKGROUND-REPEAT: no-repeat;
+
+
+}
+body{
+margin:0;
+padding:0;
+line-height:18px;
+background-color:#ffffff;FONT-FAMILY: Verdana,Segoe,sans-serif; text-align:left;}
+form{
+	margin:0;
+	padding:0;	
+}
+ul{margin:0;padding:0; list-style-type:none;}
+li{margin:0;padding:0; list-style-type:none;}
+dl{margin:0;padding:0; list-style-type:none;}
+dt{margin:0;padding:0; list-style-type:none;}
+dd{margin:0;padding:0; list-style-type:none;}
+
+
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+
+A:link {
+	color:green;
+	TEXT-DECORATION: none
+}
+A:visited {
+	color:green;
+	TEXT-DECORATION: none
+}
+A:hover {
+	color:#d30404;
+	TEXT-DECORATION: none
+}
+A:active {
+	color:green;
+	TEXT-DECORATION: none
+}
+
+
+
+
+
+A.linkBlue1:link {	color:#1587e7;	TEXT-DECORATION:none}
+A.linkBlue1:visited {	color:#1587e7;	TEXT-DECORATION: none}
+A.linkBlue1:hover {	color:#2675b8;	TEXT-DECORATION: none}
+A.linkBlue1:active {	color:#1587e7;	TEXT-DECORATION: none}
+
+
+.clears{ clear:both}
+.left{float:left}
+.leftbg{float:left}
+.right{float:right}
+
+.txtOrange{ color:#e35f1e}
+.txtGray1{ color:#888888}
+.txtGray2{ color:#666666}
+.txtBlue{ color:#0a80e2}
+.txtBlue1{color:#0264a3}
+.txtBlue2{ color:#002250}
+.txtGreen{ color:#567a4e}
+.txtRed1{color:#800015}
+
+.txtFont1{ font-size:24px}
+.txtFont2{ font-size:14px}
+.txtFont3{ font-size:18px}
+
+/* pages */
+.Pages{ margin-top:2px}
+.Pages li{float:left;  MARGIN-RIGHT: 5px; font-size:10px;}
+.Pages LI A {DISPLAY: block; COLOR: #000; padding:0px 3px; }
+.Pages LI A:hover {	 COLOR: #c70909; }
+.Pages LI A.cur_page {COLOR: #fff; background-color:#019ad3}
+.imgs{ padding-top:3px;}
+.input_jump{ padding-left:20px}
+.input_jump input{ width:40px; height:14px; border:1px #939ca3 solid;}
+
+
+/* ¸¡¶¯¿ò */
+.FloatingBox{position:fixed; #position: fixed;_position: fixed;position:absolute; background:url(../images/bg_frame.png) no-repeat; width:409px; height:218px}
+.FloatingBox_Contents{ padding-left:25px; padding-top:10px; padding-right:15px; line-height:20px;}
+.FloatingBox_Contents table{margin-top:10px}

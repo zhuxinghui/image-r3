@@ -1,0 +1,174 @@
+*.dochomeh1 {
+	PADDING-BOTTOM: 0em; FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 0.1em; FONT-SIZE: 21px; FONT-WEIGHT: bold
+}
+.bluerule {
+	BACKGROUND-COLOR: #336699
+}
+.db2rule {
+	BACKGROUND-COLOR: #009900
+}
+.lotusrule {
+	BACKGROUND-COLOR: #ffcc66
+}
+.tivolirule {
+	BACKGROUND-COLOR: #cc0000
+}
+.rationalrule {
+	BACKGROUND-COLOR: #0099cc
+}
+.wsrule {
+	BACKGROUND-COLOR: #996699
+}
+DIV#intro {
+	MARGIN: 18px 48px 24px 44px; FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 13px
+}
+DIV#itd {
+	PADDING-LEFT: 10%; WIDTH: 90%; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 24px; FLOAT: left
+}
+DIV#experience {
+	FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 13px; FONT-WEIGHT: normal
+}
+DIV#itd1 {
+	FONT-STYLE: normal; WIDTH: 50%; FONT-FAMILY: Tahoma, Arial, sans-serif; FLOAT: left; FONT-SIZE: 10px; FONT-WEIGHT: normal
+}
+DIV#itd2 {
+	PADDING-LEFT: 12px; WIDTH: 45%; FONT-FAMILY: Tahoma, Arial, sans-serif; FLOAT: left
+}
+DIV#itd H2 {
+	FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 12px; FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+DIV#rer H2 {
+	FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 12px; FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+DIV.howto H2 {
+	PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 4px; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+DIV#itd1 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd2 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd3 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd4 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd5 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd6 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#itd7 H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV#rer H3 {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV.howto H3 DIV#itd A {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+
+H3.quickr {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+DIV#quickr {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 50px; FONT-WEIGHT: bold
+}
+DIV.small-arrow {
+	PADDING-LEFT: 7px; FONT-FAMILY: Tahoma, Arial, sans-serif; FLOAT: left; MARGIN-RIGHT: 10px
+}
+DIV.howto {
+	WIDTH: 80%; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 28px
+}
+DIV.howto-det {
+	PADDING-LEFT: 44px; PADDING-RIGHT: 48px; FONT-FAMILY: Tahoma, Arial, sans-serif
+}
+DIV.howto-det P {
+	MARGIN-TOP: 0.2em; FONT-FAMILY: Tahoma, Arial, sans-serif; PADDING-TOP: 0.1em
+}
+DIV.howto-det DL {
+	PADDING-BOTTOM: 0px; MARGIN-TOP: 0.1em; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 0px; PADDING-TOP: 0.1em
+}
+#intro A:link {
+	COLOR: #006699; TEXT-DECORATION: none
+}
+#intro A:visited {
+	COLOR: #996699; TEXT-DECORATION: none
+}
+#intro A:active {
+	COLOR: #006699
+}
+#intro A:hover {
+	COLOR: #996699; TEXT-DECORATION: none
+}
+A.quickr2:link {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; COLOR: #006699; FONT-SIZE: 15px; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+A.quickr2:visited {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; COLOR: #996699; FONT-SIZE: 15px; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+A.quickr2:active {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; COLOR: #006699; FONT-SIZE: 15px; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+A.quickr2:hover {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; COLOR: #996699; FONT-SIZE: 15px; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+
+H3.quickr {
+	FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+H3.quickr2 {
+	PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 4px; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+H3.quickr3 {
+	PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN-TOP: 0px; FONT-FAMILY: Tahoma, Arial, sans-serif; MARGIN-BOTTOM: 4px; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+DIV#quickr2 {
+	BORDER-LEFT: #999 1px solid; PADDING-LEFT: 1em
+}
+.runningheader {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; COLOR: #000; FONT-SIZE: 0.8em
+}
+.runningfooter {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 10px
+}
+.runningfooter A:link {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.runningfooter A:active {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.runningfooter A:visited {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.runningfooter A:hover {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+DIV.dochomefooter HR {
+	BORDER-BOTTOM-STYLE: none; TEXT-ALIGN: left; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: #ccc; WIDTH: 95%; FONT-FAMILY: Tahoma, Arial, sans-serif; BORDER-TOP-STYLE: none; HEIGHT: 1px; COLOR: #ccc; BORDER-LEFT-STYLE: none
+}
+
+TABLE.demonstrations {
+	BORDER-BOTTOM-COLOR: black; FONT-STYLE: normal; BORDER-TOP-COLOR: black; MARGIN: 0.5em 0em 0.5em 2em; PADDING-LEFT: 15px; WIDTH: 90%; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma, Arial, sans-serif; BACKGROUND: white; COLOR: black; BORDER-RIGHT-COLOR: black; FONT-SIZE: 13px; BORDER-LEFT-COLOR: black
+}
+TH.demonstrations {
+	BACKGROUND-COLOR: #e8f2fb; COLOR: black; FONT-WEIGHT: bold
+}
+TD.demonstrations {
+	COLOR: black
+}
+.tbldesc {
+	FONT-STYLE: italic
+}
+BODY DIV.dochomefooter HR {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: #ccc; MARGIN-TOP: 5px; WIDTH: 95%; FONT-FAMILY: Tahoma, Arial, sans-serif; BORDER-TOP-STYLE: none; HEIGHT: 1px; MARGIN-LEFT: 0px; BORDER-LEFT-STYLE: none
+}
+.runningfooter {
+	FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 10px
+}
+DIV.dochomefooter {
+	PADDING-BOTTOM: 15px; BACKGROUND-COLOR: #f0f0f0; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; MARGIN-BOTTOM: 12px; BORDER-TOP: #a4a4a4 thin solid; PADDING-TOP: 15px
+}

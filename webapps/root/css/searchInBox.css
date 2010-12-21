@@ -1,0 +1,58 @@
+#shareit-box {
+	position:absolute;
+	display:none;
+}
+ 
+#shareit-header {
+	width:138px;
+}
+
+
+#shareit-body {
+	width:170px;
+	background:url(../images/tiptools/top.png);
+}
+#shareit-bottom {
+	width:170px;
+	background:url(../images/tiptools/bottom.png);
+}
+#shareit-middle {
+	width:170px;
+	background:url(../images/tiptools/midd.png);
+}
+
+#shareit-url {
+	
+}
+
+#shareit-url input.field{
+	width:100px; height:26px;
+	background: transparent url(../images/tiptools/field.gif) no-repeat;
+	border:none; outline:none;
+	padding:7px 5px 0 5px;
+	margin:3px auto;font-size:11px;
+}
+
+#shareit-icon  {
+	height:20px;
+}
+
+#shareit-icon ul {
+	list-style:none;
+	width:130px;
+	margin:0; padding:0 0 0 8px;
+}
+
+#shareit-icon ul  li{
+	float:left;
+	padding:0 2px;
+}
+
+#shareit-icon ul  li img{
+	border:none;
+}			
+.midd-span{
+	margin-left:20px;
+	margin-top:10px;
+}
+
