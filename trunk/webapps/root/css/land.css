@@ -1,0 +1,9 @@
+
+/* CSS Document */
+
+.landBG{ background:url(../images/land/bg_land.png) no-repeat; width:293px;height:132px;}
+.land_contents{ padding:15px;}
+.land_contents td{text-align:left}
+.land_input1{margin:0; padding:0; padding-left:2px; padding-top:2px; background:url(../images/land/bg_land_input1.png) no-repeat; color:#333; width:180px; height:16px; border:0px}
+.land_input2{margin:0; padding:0; padding-left:2px; padding-top:2px; background:url(../images/land/bg_land_input2.png) no-repeat; color:#333; width:47px; height:16px; border:0px}
+.land_sumbit{margin:0; padding:0;   background:url(../images/land/bg_land_submit.png) no-repeat; color:#333; width:48px; height:22px; border:0px}
