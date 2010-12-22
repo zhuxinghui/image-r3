@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="root/WEB-INF/lib/caliph-emir-cbir.jar"/>
 	<classpathentry kind="lib" path="root/WEB-INF/lib/Jama-1.0.2.jar"/>
 	<classpathentry kind="lib" path="root/WEB-INF/lib/lire.jar"/>
+	<classpathentry kind="lib" path="root/WEB-INF/lib/je-4.1.6.jar"/>
 	<classpathentry kind="output" path="root/WEB-INF/classes"/>
 </classpath>

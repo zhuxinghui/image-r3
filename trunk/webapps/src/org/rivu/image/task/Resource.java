@@ -83,7 +83,7 @@ public abstract class Resource {
 	 */
 	public static Resource getResource(JobDetail job)
 			throws Exception{
-		return job != null ? (Resource) Class.forName("").getConstructor(
+		return job != null ? (Resource) Class.forName(job.getClazz()).getConstructor(
 						new Class[] { JobDetail.class }).newInstance(
 						new Object[] { job })
 				: null;

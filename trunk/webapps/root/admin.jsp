@@ -18,7 +18,6 @@
 		<LINK href="css/jquery.alerts.css" type=text/css rel=stylesheet>
 		<LINK href="css/Pager.css" type=text/css rel=stylesheet>
 		<LINK href="css/search.css" type=text/css rel=stylesheet>
-		<LINK href="css/themes/default/easyui.css" type=text/css rel=stylesheet>
 
 		<LINK href="css/clickmenu.css"  type="text/css"  rel="stylesheet" >
 		<LINK rel="STYLESHEET" type="text/css"	href="codebase/dhtmlxtree.css">
@@ -36,12 +35,11 @@
 		<script src="codebase/jquery.blockUI.js"></script>
 		<script src="codebase/validation.js"></script>
 		<script src="codebase/jquery.clickmenu.js"></script>
-		<script src="codebase/jquery.easyui.min"></script>
-		<script src="codebase/swfobject.js"></script>
 		<script src="codebase/rivu.js"></script>
 		<script language="javascript">
 			$(document).ready(function(){
 				welcomeDate("welcomeDate");
+				doUpdateRunningStatus();
 			});
 		</script>
 	</head>
@@ -179,11 +177,18 @@
 														<li><a href="javascript:changeFunction(13);"><img src="../../images/icons/shield_32.png"> 索引维护 <br><span>System Setting</span></a></li>
 													</ul>
 												</td>
-												<td style="border-left:5px solid #DEDEDE;padding-left:10px;width:30%;">
-													asdfs
+												<td style="border-left:5px solid #DEDEDE;padding-left:10px;width:390px;padding:5px;" valign="top">
+													<div id="imagetask" style="background-color:#ffffff;">
+														<%@ include file="/pages/taskList.jsp"%>	
+													</div>
+													<div style="float:right;background-color:#ffffff;">
+														<img src="/images/list/metadata.png" onclick="jPrompt('图片采集目录','','添加图片采集任务',function(r){doGet('task.rv?data.resource='+encodeURIComponent(r),'imagetask');})"/>
+													</div>
 												</td>
-												<td style="border-left:5px solid #DEDEDE;padding-left:10px;">
-													asdfs
+												<td style="border-left:5px solid #DEDEDE;padding-left:10px;" valign="top">
+													<div id="taskConsole" style="font-weight:normal;">
+													<%@ include file="/pages/taskConsole.jsp"%>	
+													</div>
 												</td>
 											</tr>
 										</table>

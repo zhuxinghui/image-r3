@@ -136,10 +136,7 @@
 					url: ajaxUrl,
 					type: "get",
 					success:function(data){
-						if(document.getElementById("crawlConsole")){
-							$("#" + panelId).empty().show().html(data);
-						}
-						
+						$("#" + panelId).empty().show().html(data);
 						if(func){
 							func();
 						}
@@ -190,18 +187,8 @@
 			function doUpdateRunningStatus()
 			{
 				running = true ;
-				$("#crawlConsole").everyTime(3000, function(i) { 
-					if(running)
-					{
-						if(document.getElementById("crawlConsole"))
-						{
-							doGetUpdate('crawl.rv','indexPanel',null,function(){running=false;$("#crawlConsole").stopTime();});
-						}else{
-							$("#crawlConsole").stopTime();
-						}
-					}else{
-						$("#crawlConsole").stopTime();
-					}
+				$("#taskConsole").everyTime(3000, function(i) { 
+					doGetUpdate('console.rv','taskConsole',null);
 				}) ;
 			}
 			function selectAll(){

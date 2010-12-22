@@ -1,7 +1,12 @@
 package org.rivu.image.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.rivu.image.core.RivuContext;
+import org.rivu.image.task.JobDetail;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -83,5 +88,11 @@ public class Handler extends ActionSupport implements ServletHandler {
 	}
 	public User getUser(){
 		return new User();
+	}
+	public List<JobDetail> getJobList(){
+		return RivuContext.jobList ;
+	}
+	public boolean isChange(){
+		return RivuContext.jobChange ;
 	}
 }

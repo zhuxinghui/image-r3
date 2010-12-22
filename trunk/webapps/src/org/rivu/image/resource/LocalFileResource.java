@@ -15,6 +15,7 @@ import org.rivu.image.task.JobDetail;
 import org.rivu.image.task.OutputTextFormat;
 import org.rivu.image.task.Resource;
 import org.rivu.image.tools.MD5;
+import org.rivu.image.tools.RivuTools;
 
 /**
  * 采集本地目录中的 图片文件
@@ -31,7 +32,7 @@ public class LocalFileResource extends Resource{
 		fileList = new ArrayList<File>() ;
 		filter = new FilenameFilter(){
 			public boolean accept(File dir, String name) {
-				return new File(dir , name).isDirectory() && RivuContext.IMAGE_FILE.indexOf(name.substring(name.lastIndexOf(".")+1))>=0;
+				return new File(dir , name).isDirectory() || RivuContext.IMAGE_FILE.toLowerCase().indexOf(name.substring(name.lastIndexOf(".")+1).toLowerCase())>=0;
 			}
 		} ;
 		listFile( new File(jobDetail.getSource()));
@@ -67,19 +68,28 @@ public class LocalFileResource extends Resource{
 	@Override
 	public OutputTextFormat getText(OutputTextFormat object) throws Exception {
 		File imageFile = (File)object.getData() ;
+		object.setLength((int)imageFile.length());
 		BufferedImage image = ImageIO.read(imageFile) ;
-		object.setData(DocumentBuilderFactory.getFullDocumentBuilder().createDocument(image, MD5.getHash(imageFile))) ;
+		if(image!=null){
+			object.getProperty().put("width", String.valueOf(image.getWidth())) ;
+			object.getProperty().put("height", String.valueOf(image.getHeight())) ;
+			object.setData(DocumentBuilderFactory.getFullDocumentBuilder().createDocument(image, object.getId())) ;
+		}
 		return object;
 	}
 
 	@Override
 	public OutputTextFormat next() throws Exception {
 		File imageFile = fileList.size()>0?fileList.remove(0):null ;
+		String id = null;
+		if(imageFile!=null){
+			id = MD5.encoding(imageFile.getPath()) ;
+		}
 		while(imageFile!=null && imageFile.isDirectory()){
 			listFile(imageFile);
 			imageFile = fileList.size()>0?fileList.remove(0):null ;
 		}
-		return new OutputTextFormat(imageFile);
+		return imageFile!=null?RivuTools.isAva((id = MD5.encoding(imageFile.getPath())))?new OutputTextFormat(imageFile,id):next():null;
 	}
 
 	public JobDetail getJobDetail() {
