@@ -65,18 +65,18 @@ import java.io.InputStream;
 public interface DocumentBuilder {
     public static final int MAX_IMAGE_SIDE_LENGTH = 800;
 
-    public static final String FIELD_NAME_SCALABLECOLOR = "descriptorScalableColor";
-    public static final String FIELD_NAME_COLORLAYOUT = "descriptorColorLayout";
-    public static final String FIELD_NAME_EDGEHISTOGRAM = "descriptorEdgeHistogram";
-    public static final String FIELD_NAME_AUTOCOLORCORRELOGRAM = "featureAutoColorCorrelogram";
-    public static final String FIELD_NAME_COLORHISTOGRAM = "featureColorHistogram";
-    public static final String FIELD_NAME_CEDD = "featureCEDD";
-    public static final String FIELD_NAME_FCTH = "featureFCTH";
-    public static final String FIELD_NAME_TAMURA = "featureTAMURA";
-    public static final String FIELD_NAME_GABOR = "featureGabor";
-    public static final String FIELD_NAME_SIFT = "featureSift";
-    public static final String FIELD_NAME_SIFT_LOCAL_FEATURE_HISTOGRAM = "featureSiftHistogram";
-    public static final String FIELD_NAME_IDENTIFIER = "descriptorImageIdentifier";
+    public static final String FIELD_NAME_SCALABLECOLOR = "dsc"; //descriptorScalableColor
+    public static final String FIELD_NAME_COLORLAYOUT = "dcl"; //descriptorColorLayout
+    public static final String FIELD_NAME_EDGEHISTOGRAM = "deh"; //descriptorEdgeHistogram
+    public static final String FIELD_NAME_AUTOCOLORCORRELOGRAM = "facc"; //featureAutoColorCorrelogram
+    public static final String FIELD_NAME_COLORHISTOGRAM = "fch"; //featureColorHistogram
+    public static final String FIELD_NAME_CEDD = "cedd"; //featureCEDD
+    public static final String FIELD_NAME_FCTH = "fcth"; //featureFCTH
+    public static final String FIELD_NAME_TAMURA = "tamura"; //featureTAMURA
+    public static final String FIELD_NAME_GABOR = "fg"; //featureGabor
+    public static final String FIELD_NAME_SIFT = "fs";  //featureSift
+    public static final String FIELD_NAME_SIFT_LOCAL_FEATURE_HISTOGRAM = "fsh"; //featureSiftHistogram
+    public static final String FIELD_NAME_IDENTIFIER = "dii"; //descriptorImageIdentifier
 
     /**
      * Creates a new Lucene document from a BufferedImage. The identifier can be used like an id

@@ -14,8 +14,14 @@
 		<action name="index" class="org.rivu.image.web.Handler">
 			<result>/index.jsp</result>
 		</action>
-		<action name="admin" class="org.rivu.image.web.Handler">
+		<action name="console" class="org.rivu.image.web.Handler">
+			<result>/pages/taskConsole.jsp</result>
+		</action>
+		<action name="admin" class="org.rivu.image.web.CrawlTaskHandler" method="list">
 			<result>/admin.jsp</result>
+		</action>
+		<action name="task" class="org.rivu.image.web.CrawlTaskHandler" method="add">
+			<result>/pages/taskList.jsp</result>
 		</action>
 	</package>
 </struts>

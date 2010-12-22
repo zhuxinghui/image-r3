@@ -1,5 +1,8 @@
 package org.rivu.image.task;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class OutputTextFormat {
 	private String id ;
@@ -13,9 +16,11 @@ public class OutputTextFormat {
 	private String contentType ;
 	private int length = 0;
 	private boolean split = false ;
+	private Map<String,String> property = new HashMap<String,String>();
 	public OutputTextFormat(){}
-	public OutputTextFormat(Object data){
+	public OutputTextFormat(Object data , String id){
 		this.data = data ;
+		this.id = id ;
 	}
 	public String getId() {
 		return id;
@@ -82,6 +87,12 @@ public class OutputTextFormat {
 	}
 	public void setLength(int length) {
 		this.length = length;
+	}
+	public Map<String, String> getProperty() {
+		return property;
+	}
+	public void setProperty(Map<String, String> property) {
+		this.property = property;
 	}
 	
 }
