@@ -116,6 +116,11 @@ body{
 .imagePanel{margin:0;padding:0; list-style-type:none;}
 .imagePanel li{margin:0;padding:0; list-style-type:none;float:left;}
 
+
+.imageRightPanel{margin:10px 0 0 20px;padding:0; list-style-type:none;}
+.imageRightPanel li{margin:0;padding:0; list-style-type:none;}
+
+
 dl{margin:0;padding:0; list-style-type:none;}
 dt{margin:0;padding:0; list-style-type:none;}
 dd{margin:0;padding:0; list-style-type:none;}
