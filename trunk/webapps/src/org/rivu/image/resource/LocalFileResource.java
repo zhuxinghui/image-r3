@@ -14,6 +14,7 @@ import org.rivu.image.core.RivuContext;
 import org.rivu.image.task.JobDetail;
 import org.rivu.image.task.OutputTextFormat;
 import org.rivu.image.task.Resource;
+import org.rivu.image.tools.ImageUtils;
 import org.rivu.image.tools.MD5;
 import org.rivu.image.tools.RivuTools;
 
@@ -71,6 +72,11 @@ public class LocalFileResource extends Resource{
 		object.setLength((int)imageFile.length());
 		object.setTitle(imageFile.getPath()) ;
 		BufferedImage image = ImageIO.read(imageFile) ;
+		object.getProperty().put("url", imageFile.getPath()) ;
+		/**
+		 * …˙≥…Àı¬‘Õº
+		 */
+		ImageUtils.saveImageToPriview(ImageUtils.scaleImage(image, 128),RivuContext.SAVE_FILE_DIR,object.getId()) ;
 		if(image!=null){
 			object.getProperty().put("width", String.valueOf(image.getWidth())) ;
 			object.getProperty().put("height", String.valueOf(image.getHeight())) ;

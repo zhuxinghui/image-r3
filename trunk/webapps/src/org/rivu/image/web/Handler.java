@@ -123,5 +123,7 @@ public class Handler extends ActionSupport implements ServletHandler {
 	public void setP(int p) {
 		this.p = p;
 	}
-	
+	public String getPath(){
+		return RivuContext.FILE_URL ;
+	}
 }

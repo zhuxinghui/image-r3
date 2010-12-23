@@ -25,7 +25,7 @@ public class SearchHandler extends Handler{
 	private SearchResult result = new SearchResult();
 	private String q ;	//query
 	private String s ;	//start
-	private String ps ;	//page size
+	private String ps = "20";	//page size
 	private String eq ;	//encoding query
 	private String sr ;	//sort 
 	private String t ; //templet id
@@ -40,6 +40,10 @@ public class SearchHandler extends Handler{
 	private String fq ; //function query
 	private int pn ;
 	private String img ;
+	private int width ;
+	private int height ;
+	private String imageType ;
+	private int length ;
 	private static java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\{([\\w\\.\\_\\-]*?)\\}") ;
 	/**
 	 * ²å¼þÊ¹ÓÃ
@@ -51,6 +55,8 @@ public class SearchHandler extends Handler{
 				if(q.matches("http[s]{0,}://[\\s\\S]*")){
 					if(image==null || image.length()==0){
 						BufferedImage qImage = ImageIO.read(new URL(q)) ;
+						width = qImage.getWidth() ;
+						height = qImage.getHeight() ;
 						if(qImage!=null){
 							LireFeature c = new CEDD();
 							c.extract(qImage) ;
@@ -65,9 +71,10 @@ public class SearchHandler extends Handler{
 //				String u= request.getParameter("u")!=null&&request.getParameter("u").length()>0?request.getParameter("u"):"10" ;
 				String u = String.valueOf(10) ;
 				if(image!=null && !image.equals("")){
-					fq = "{!frange l="+l+" u="+u+"}rivu(image,'"+image+"')" ;
-					sr = "rivu(image,'"+image+"') asc" ;
+					fq = "{!frange l="+l+" u="+u+"}rivu(cedd,'"+image+"')" ;
+					sr = "rivu(cedd,'"+image+"') asc" ;
 				}
+				q="*:*";
 				search();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -89,70 +96,20 @@ public class SearchHandler extends Handler{
 		SolrQuery query = new SolrQuery(); 
 		
 		Map paramMap = new HashMap() ;
-		ps = ps !=null && ps.matches("[\\d]+") ? ps :"10" ;
+		ps = ps !=null && ps.matches("[\\d]+") ? ps :"20" ;
 		paramMap.put("rows", ps) ;
 		paramMap.put("start", String.valueOf((p-1)*Integer.parseInt(ps))) ;
 		try {
 			eq = java.net.URLEncoder.encode(q, "UTF-8") ;
 		} catch (UnsupportedEncodingException e1) {}
-		if(q.indexOf("&")>=0 && q.charAt(q.indexOf("&")-1)!='\\'){
-			String[] parames = q.split("&") ;
-			for(String param : parames){
-				String[] value = param.split("=") ;
-				if(value.length>=2){
-					if(value.length>2){
-						StringBuffer strb = new StringBuffer();
-						for(int i=1 ; i<value.length ; i++){
-							if(strb.length()>0){
-								strb.append("=") ;
-							}
-							strb.append(value[i]) ;
-						}
-						String key = value[0] ;
-						value = new String[2] ;
-						value[0] = key ;
-						value[1] = strb.toString() ;
-					}
-					if(paramMap.get(value[0])!=null){
-						String[] aParam = null ;
-						if(paramMap.get(value[0]) instanceof String[]){
-							aParam = new String[((String[])paramMap.get(value[0])).length+1] ;
-							for(int i=0 ; i<aParam.length-1 ; i++){
-								aParam[i] = ((String[])paramMap.get(value[0]))[i] ;
-							}
-							aParam[aParam.length-1] = value[1] ;
-						}else{
-							aParam = new String[2];
-							aParam[0] = (String)paramMap.get(value[0]) ;
-							aParam[1] = value[1] ;
-						}
-						if(aParam!=null)
-							paramMap.put(value[0], aParam) ;
-					}else{
-						paramMap.put(value[0], value[1]) ;
-					}
-				}else if(value.length==1){
-					paramMap.put("q", value[0]) ;
-				}
-			}
-		}else{
-			paramMap.put("q", q) ;
-		}
+		paramMap.put("q", q) ;
 		
 		result = new SearchResult() ;
 		result.setPageSize(Integer.parseInt(ps)) ;
 		{
 			{
 				if(sr!=null)
-					if(sr.indexOf(",")>=0){
-						if(sr.startsWith(",")){
-							paramMap.put("sort", sr.substring(1).split(",")) ;
-						}else{
-							paramMap.put("sort", sr.split(",")) ;
-						}
-					}else{
-						paramMap.put("sort", sr) ;
-					}
+					paramMap.put("sort", sr) ;
 				/**
 				 * Facet Field
 				 */
@@ -341,6 +298,42 @@ public class SearchHandler extends Handler{
 
 	public static void setPattern(java.util.regex.Pattern pattern) {
 		SearchHandler.pattern = pattern;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public String getImageType() {
+		return imageType;
+	}
+
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 	
 }

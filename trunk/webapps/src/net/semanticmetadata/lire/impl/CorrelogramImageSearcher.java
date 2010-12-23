@@ -69,10 +69,6 @@ public class CorrelogramImageSearcher extends AbstractImageSearcher {
         int docs = reader.numDocs();
         for (int i = 0; i < docs; i++) {
             // bugfix by Roman Kern
-            if (hasDeletions && reader.isDeleted(i)) {
-                continue;
-            }
-
             Document d = reader.document(i);
             float distance = getDistance(d, acc);
             // calculate the overall max distance to normalize score afterwards
@@ -141,9 +137,6 @@ public class CorrelogramImageSearcher extends AbstractImageSearcher {
         int docs = reader.numDocs();
         int numDuplicates = 0;
         for (int i = 0; i < docs; i++) {
-            if (hasDeletions && reader.isDeleted(i)) {
-                continue;
-            }
             Document d = reader.document(i);
             float distance = getDistance(d, acc);
 

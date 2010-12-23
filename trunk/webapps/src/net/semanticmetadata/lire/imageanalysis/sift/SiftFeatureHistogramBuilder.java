@@ -27,7 +27,6 @@
 package net.semanticmetadata.lire.imageanalysis.sift;
 
 import net.semanticmetadata.lire.DocumentBuilder;
-import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
@@ -52,77 +51,7 @@ public class SiftFeatureHistogramBuilder {
         this.reader = reader;
     }
 
-    public void index() throws IOException {
-        KMeans k = new KMeans();
-        // fill the KMeans object:
-        LinkedList<Feature> features;
-        for (int i = 0; i < reader.numDocs(); i++) {
-            if (!reader.isDeleted(i)) {
-                Document d = reader.document(i);
-                features = new LinkedList<Feature>();
-                String[] fs = d.getValues(DocumentBuilder.FIELD_NAME_SIFT);
-                String file = d.getValues(DocumentBuilder.FIELD_NAME_IDENTIFIER)[0];
-                for (int j = 0; j < fs.length; j++) {
-                    Feature f = new Feature();
-                    f.setStringRepresentation(fs[j]);
-                    features.add(f);
-                }
-                k.addImage(file, features);
-            }
-        }
-        // do the clustering:
-        System.out.println("Start clustering.");
-        k.init();
-        double laststress = k.clusteringStep();
-        double newstress = k.clusteringStep();
-        while (newstress > laststress) {
-            laststress = newstress;
-            newstress = k.clusteringStep();
-        }
-        //  ccreate histograms:
-        System.out.println("Create histogram.");
-        List<Image> imgs = k.getImages();
-        for (Iterator<Image> imageIterator = imgs.iterator(); imageIterator.hasNext();) {
-            Image image = imageIterator.next();
-            image.initHistogram(k.getNumClusters());
-            for (Iterator<Feature> iterator = image.features.iterator(); iterator.hasNext();) {
-                Feature feat = iterator.next();
-                image.getLocalFeatureHistogram()[k.getClusterOfFeature(feat)]++;
-                image.normalizeFeatureHistogram();
-            }
-        }
-        // store histograms in index:
-        LinkedList<Integer> toDelete = new LinkedList<Integer>();
-        LinkedList<Document> toAdd = new LinkedList<Document>();
-        for (int i = 0; i < reader.numDocs(); i++) {
-            if (!reader.isDeleted(i)) {
-                Document d = reader.document(i);
-                String file = d.getValues(DocumentBuilder.FIELD_NAME_IDENTIFIER)[0];
-                int[] hist = null;
-                for (Iterator<Image> imageIterator = imgs.iterator(); imageIterator.hasNext();) {
-                    Image tmp = imageIterator.next();
-                    if (tmp.identifier.equals(file)) hist = tmp.getLocalFeatureHistogram();
-                }
-                if (hist != null) {
-                    d.add(new Field(DocumentBuilder.FIELD_NAME_SIFT_LOCAL_FEATURE_HISTOGRAM, arrayToString(hist), Field.Store.YES, Field.Index.NO));
-                    toAdd.add(d);
-                    toDelete.add(i);
-                } else
-                    System.err.println("Oops, no global histogram found.");
-            }
-        }
-        // delete old ones from index
-        for (Iterator<Integer> documentIterator = toDelete.iterator(); documentIterator.hasNext();) {
-            reader.deleteDocument(documentIterator.next());
-        }
-        // add new ones ...
-        IndexWriter iw = new IndexWriter(reader.directory(), new SimpleAnalyzer(), true, IndexWriter.MaxFieldLength.UNLIMITED);
-        for (Iterator<Document> documentIterator = toAdd.iterator(); documentIterator.hasNext();) {
-            iw.addDocument(documentIterator.next());
-        }
-        iw.optimize();
-        iw.close();
-    }
+   
 
     private String arrayToString(int[] hist) {
         StringBuilder sb = new StringBuilder(256);

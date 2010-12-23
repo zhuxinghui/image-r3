@@ -65,9 +65,6 @@ public class SiftLocalFeatureHistogramImageSearcher extends AbstractImageSearche
         int docs = reader.numDocs();
         for (int i = 0; i < docs; i++) {
             // bugfix by Roman Kern
-            if (hasDeletions && reader.isDeleted(i)) {
-                continue;
-            }
 
             Document d = reader.document(i);
             float distance = getDistance(d, hist);
