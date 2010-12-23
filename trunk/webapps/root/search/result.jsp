@@ -16,7 +16,7 @@
 		<LINK href="css/jquery.alerts.css" type=text/css rel=stylesheet>
 		<LINK href="css/Pager.css" type=text/css rel=stylesheet>
 		<LINK href="css/search.css" type=text/css rel=stylesheet>
-
+		<title>开源图像搜索引擎，IMAGE-R3</title>
 		<LINK href="css/clickmenu.css"  type="text/css"  rel="stylesheet" >
 		<LINK rel="STYLESHEET" type="text/css"	href="codebase/dhtmlxtree.css">
 		<script src="codebase/dhtmlxcommon.js"></script>
@@ -51,7 +51,7 @@
 			<div class="searchForm searchForm2">
 				<div class="logo_rs"></div>
 				<form action="/search.rv" method="get">
-				<s:hidden value="ps"/>
+				<s:hidden name="ps"/>
 				<ul style="float:left;">
 					<li style="margin-top:2px;"><input type="text" maxlength="100000" name="q" id="url_box" class="searchinput2" value="<%=request.getParameter("q")%>"></li>
 					<li style="margin-left:10px;"><input type="image" type="submit" src="/images/searchbtn.png"></li>
@@ -73,9 +73,7 @@
 						</s:if>
 						<div style="margin-top:20px;font-size:15px;text-align:right;">
 							<ul>
-								<li style="font-weight:bold;">排序方式</li>
-								<li style="font-weight:bold;">相似度</li>
-								<li style="font-weight:bold;">尺寸</li>
+								
 							</ul>
 						</div>
 					</li>
@@ -90,13 +88,6 @@
 			</div>
 			<div style="clear:both;"></div>
 		</div>
-		<div>
-			<hr style="height:1px;border:none;border-top:1px solid #a7d5f6;"/>
-			<div style="width:100%;text-align:center;">
-				Copyright © 2010 | Powered by: <a href="http://www.rivues.com" target="_blank">起点R3</a><br/>
-				开源图像搜索IMAGE-R3<br/>
-				<a href="mailto:rivulet.es@gmail.com">rivulet.es@gmail.com</a>
-			</div>
-		</div>
+		
 	</body>
 </html>
