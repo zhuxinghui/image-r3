@@ -4,6 +4,8 @@ package org.rivu.image.tools.db;
 import java.io.File;
 import java.util.Date;
 
+import org.rivu.image.core.RivuContext;
+
 
 import com.sleepycat.je.Environment;
 import com.sleepycat.je.EnvironmentConfig;
@@ -25,7 +27,7 @@ public class GenDAO{
 		envConfig.setCacheSize(5000000);       
 		envConfig.setConfigParam("je.log.fileMax", String.valueOf(1000000000)); 
 		 /* Open the entity store. */      
-		env = new Environment(new File("c:\\test\\image","db"), envConfig);
+		env = new Environment(new File(RivuContext.SAVE_DB_DIR,"db"), envConfig);
 		storeConfig.setAllowCreate(true);     
 		storeConfig.setTransactional(false);
 		storeConfig.setDeferredWrite(false);
