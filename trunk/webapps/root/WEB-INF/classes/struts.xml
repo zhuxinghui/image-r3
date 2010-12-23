@@ -19,6 +19,7 @@
 		<default-interceptor-ref name="rivuletStack"/>
 		<global-results>
 			<result name="login" type="redirect">/login.jsp</result> 
+			<result name="input" type="redirect">/index.jsp</result> 
 		</global-results>	
 	</package>
 	<package name="index" namespace="/" extends="rivulet-default">
