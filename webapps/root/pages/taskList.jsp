@@ -15,7 +15,7 @@
 				</td>
 				<td align="left" valign="top">																	
 					<div style="background-color:#ffffff;margin-top:5px;margin-left:10px;">
-						<div style="background-color:#ffffff;">
+						<div class="overHidden" style="background-color:#ffffff;width:110px;">
 							<a href="javascript:void(0)" onclick="doGet('${pageContext.request.contextPath}/crawl/ftp!edit.rv?data.id=<s:property value="id"/>','editPanel')"><s:property value="resource"/></a>
 						</div>
 						<div style="background-color:#ffffff;">
