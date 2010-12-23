@@ -2,6 +2,7 @@ package org.rivu.image.tools;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +23,7 @@ import org.rivu.image.core.RivuContext;
 public class RivuTools {
 	
 	private static Map<String,String> keyMap = new HashMap<String, String>();
-	
+	private static java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**
 	 * 
 	 */
@@ -92,5 +93,12 @@ public class RivuTools {
 		}
 		return ava ;
 	}
-	
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String formatDate(Date date){
+		return dateFormat.format(date) ;
+	}
 }

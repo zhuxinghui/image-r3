@@ -1,0 +1,346 @@
+package org.rivu.image.web;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
+
+import net.semanticmetadata.lire.imageanalysis.CEDD;
+import net.semanticmetadata.lire.imageanalysis.LireFeature;
+
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.rivu.image.core.RivuContext;
+import org.rivu.image.solr.RivuDocument;
+import org.rivu.image.solr.RivuParams;
+
+import com.opensymphony.xwork2.Action;
+
+public class SearchHandler extends Handler{
+	private static final long serialVersionUID = 1L;
+	private SearchResult result = new SearchResult();
+	private String q ;	//query
+	private String s ;	//start
+	private String ps ;	//page size
+	private String eq ;	//encoding query
+	private String sr ;	//sort 
+	private String t ; //templet id
+	private String id ;
+	private String qd ;		//
+	private String c ;	  //commit delete by query
+	private String f ;   //Query filter
+	private String ef ;  //encode Query Filter ;
+	private String tf ; // terms field
+	private String ty ; //Search Category
+	private String fn ; //Preview File Name
+	private String fq ; //function query
+	private int pn ;
+	private String img ;
+	private static java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\{([\\w\\.\\_\\-]*?)\\}") ;
+	/**
+	 * 插件使用
+	 */
+	public String execute(){
+		if(q!=null && q.length()>0){
+			try {
+				String image = request.getParameter("image") ;
+				if(q.matches("http[s]{0,}://[\\s\\S]*")){
+					if(image==null || image.length()==0){
+						BufferedImage qImage = ImageIO.read(new URL(q)) ;
+						if(qImage!=null){
+							LireFeature c = new CEDD();
+							c.extract(qImage) ;
+							image = c.getStringRepresentation() ;
+							img = q ;
+						}
+					}
+					q = "*:*" ;
+				}
+				
+				String l= request.getParameter("l")!=null&&request.getParameter("l").length()>0?request.getParameter("l"):"0" ;
+//				String u= request.getParameter("u")!=null&&request.getParameter("u").length()>0?request.getParameter("u"):"10" ;
+				String u = String.valueOf(10) ;
+				if(image!=null && !image.equals("")){
+					fq = "{!frange l="+l+" u="+u+"}rivu(image,'"+image+"')" ;
+					sr = "rivu(image,'"+image+"') asc" ;
+				}
+				search();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return Action.SUCCESS ;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
+	@SuppressWarnings("unchecked")
+	public String search() throws IOException{
+		if(q==null || q.equals("")){
+			return super.sendError("搜索请求无效，请输入搜索关键词.") ;
+		}
+		SolrQuery query = new SolrQuery(); 
+		
+		Map paramMap = new HashMap() ;
+		ps = ps !=null && ps.matches("[\\d]+") ? ps :"10" ;
+		paramMap.put("rows", ps) ;
+		paramMap.put("start", String.valueOf((p-1)*Integer.parseInt(ps))) ;
+		try {
+			eq = java.net.URLEncoder.encode(q, "UTF-8") ;
+		} catch (UnsupportedEncodingException e1) {}
+		if(q.indexOf("&")>=0 && q.charAt(q.indexOf("&")-1)!='\\'){
+			String[] parames = q.split("&") ;
+			for(String param : parames){
+				String[] value = param.split("=") ;
+				if(value.length>=2){
+					if(value.length>2){
+						StringBuffer strb = new StringBuffer();
+						for(int i=1 ; i<value.length ; i++){
+							if(strb.length()>0){
+								strb.append("=") ;
+							}
+							strb.append(value[i]) ;
+						}
+						String key = value[0] ;
+						value = new String[2] ;
+						value[0] = key ;
+						value[1] = strb.toString() ;
+					}
+					if(paramMap.get(value[0])!=null){
+						String[] aParam = null ;
+						if(paramMap.get(value[0]) instanceof String[]){
+							aParam = new String[((String[])paramMap.get(value[0])).length+1] ;
+							for(int i=0 ; i<aParam.length-1 ; i++){
+								aParam[i] = ((String[])paramMap.get(value[0]))[i] ;
+							}
+							aParam[aParam.length-1] = value[1] ;
+						}else{
+							aParam = new String[2];
+							aParam[0] = (String)paramMap.get(value[0]) ;
+							aParam[1] = value[1] ;
+						}
+						if(aParam!=null)
+							paramMap.put(value[0], aParam) ;
+					}else{
+						paramMap.put(value[0], value[1]) ;
+					}
+				}else if(value.length==1){
+					paramMap.put("q", value[0]) ;
+				}
+			}
+		}else{
+			paramMap.put("q", q) ;
+		}
+		
+		result = new SearchResult() ;
+		result.setPageSize(Integer.parseInt(ps)) ;
+		{
+			{
+				if(sr!=null)
+					if(sr.indexOf(",")>=0){
+						if(sr.startsWith(",")){
+							paramMap.put("sort", sr.substring(1).split(",")) ;
+						}else{
+							paramMap.put("sort", sr.split(",")) ;
+						}
+					}else{
+						paramMap.put("sort", sr) ;
+					}
+				/**
+				 * Facet Field
+				 */
+				RivuParams params = new RivuParams(paramMap) ;
+				query.add(params) ;
+				
+				QueryResponse rsp = null;
+				try {
+					rsp = RivuContext.getServer().query( query );
+					result.setQ(q) ;
+					result.setEncodeq(java.net.URLEncoder.encode(q, "UTF-8")) ;
+					result.setDocNum(rsp.getResults().getNumFound()) ;
+					result.setStart(rsp.getResults().getStart()) ;
+					result.setRows(rsp.getResults().size()) ;
+					result.setTime(rsp.getQTime()) ;
+					RuntimeData.setSearchQueryNum(1) ;
+					RuntimeData.setSearchQueryTime(result.getTime()) ;
+					result.setStatus(rsp.getStatus()) ;
+					RivuDocument rivuDocument = null ;
+					
+					for(int i=0 ; i<rsp.getResults().size() ; i++){
+						
+						rivuDocument = new RivuDocument(rsp.getResults().get(i), rsp.getHighlighting()!=null?rsp.getHighlighting().get(rsp.getResults().get(i).get("id")):null) ;
+						result.getDocList().add(rivuDocument) ;
+					}
+					result.setSpellcheck(rsp.getSpellCheckResponse()) ;
+				} catch (Exception e) {
+					e.printStackTrace();
+					result = new SearchResult() ;
+					result.setError(true) ;
+					result.setErrormsg(String.valueOf(e)) ;
+					return super.sendError("Query Failed : "+e.getMessage()) ;
+				} 
+			}
+		}
+		return Action.SUCCESS;
+	}
+
+	public SearchResult getResult() {
+		return result;
+	}
+
+	public void setResult(SearchResult result) {
+		this.result = result;
+	}
+
+	public String getQ() {
+		return q;
+	}
+
+	public void setQ(String q) {
+		this.q = q;
+	}
+
+	public String getS() {
+		return s;
+	}
+
+	public void setS(String s) {
+		this.s = s;
+	}
+
+	public String getPs() {
+		return ps;
+	}
+
+	public void setPs(String ps) {
+		this.ps = ps;
+	}
+
+	public String getEq() {
+		return eq;
+	}
+
+	public void setEq(String eq) {
+		this.eq = eq;
+	}
+
+	public String getSr() {
+		return sr;
+	}
+
+	public void setSr(String sr) {
+		this.sr = sr;
+	}
+
+	public String getT() {
+		return t;
+	}
+
+	public void setT(String t) {
+		this.t = t;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getQd() {
+		return qd;
+	}
+
+	public void setQd(String qd) {
+		this.qd = qd;
+	}
+
+	public String getC() {
+		return c;
+	}
+
+	public void setC(String c) {
+		this.c = c;
+	}
+
+	public String getF() {
+		return f;
+	}
+
+	public void setF(String f) {
+		this.f = f;
+	}
+
+	public String getEf() {
+		return ef;
+	}
+
+	public void setEf(String ef) {
+		this.ef = ef;
+	}
+
+	public String getTf() {
+		return tf;
+	}
+
+	public void setTf(String tf) {
+		this.tf = tf;
+	}
+
+	public String getTy() {
+		return ty;
+	}
+
+	public void setTy(String ty) {
+		this.ty = ty;
+	}
+
+	public String getFn() {
+		return fn;
+	}
+
+	public void setFn(String fn) {
+		this.fn = fn;
+	}
+
+	public String getFq() {
+		return fq;
+	}
+
+	public void setFq(String fq) {
+		this.fq = fq;
+	}
+
+	public int getPn() {
+		return pn;
+	}
+
+	public void setPn(int pn) {
+		this.pn = pn;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public static java.util.regex.Pattern getPattern() {
+		return pattern;
+	}
+
+	public static void setPattern(java.util.regex.Pattern pattern) {
+		SearchHandler.pattern = pattern;
+	}
+	
+}

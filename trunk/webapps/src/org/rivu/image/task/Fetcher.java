@@ -131,6 +131,7 @@ public class Fetcher implements Runnable {
 						solrDoc.addField("size",outputTextFormat.getLength());
 						solrDoc.addField("width", outputTextFormat.getProperty().get("width")!=null?outputTextFormat.getProperty().get("width"):0);
 						solrDoc.addField("height", outputTextFormat.getProperty().get("height")!=null?outputTextFormat.getProperty().get("height"):0);
+						solrDoc.addField("title", outputTextFormat.getTitle()!=null?outputTextFormat.getTitle():"");
 						solrDoc.addField("taskid", job.getTaskid());
 						Document document = (Document)outputTextFormat.getData() ;
 						solrDoc.addField("dsc", document.getField("dsc")!=null?document.getField("dsc").stringValue():"");

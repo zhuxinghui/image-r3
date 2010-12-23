@@ -1,5 +1,6 @@
 package org.rivu.image.web;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ public class Handler extends ActionSupport implements ServletHandler {
 	protected String msg = null;
 	private String namespace ;
 	private String actionName ;
+	protected int p = 1;
 
 	public void setAction(String namespace, String action) {
 		this.namespace = namespace.startsWith("/")?namespace.substring(1):namespace ;
@@ -39,6 +41,24 @@ public class Handler extends ActionSupport implements ServletHandler {
 			throws Exception {
 		this.response = response ;
 	}
+	
+	protected String sendError(String msg) throws IOException{
+		StringBuffer strb = new StringBuffer() ;
+		for(int i=0 ; i<msg.length() ; i++){
+			if(msg.charAt(i)>=19968 && msg.charAt(i)<=40959){
+				strb.append("&#").append((int)msg.charAt(i)).append(";") ;
+			}else{
+				strb.append(msg.charAt(i)) ;
+			}
+		}
+		response.addHeader("emsg", strb.toString()) ;
+		response.setCharacterEncoding("UTF-8") ;
+		response.setContentType("text/html,charset=UTF-8") ;
+		response.sendError(400,msg);
+		
+		return null ;
+	}
+	
 	/**
 	 * 
 	 * @return
@@ -95,4 +115,13 @@ public class Handler extends ActionSupport implements ServletHandler {
 	public boolean isChange(){
 		return RivuContext.jobChange ;
 	}
+
+	public int getP() {
+		return p;
+	}
+
+	public void setP(int p) {
+		this.p = p;
+	}
+	
 }
