@@ -69,6 +69,7 @@ public class LocalFileResource extends Resource{
 	public OutputTextFormat getText(OutputTextFormat object) throws Exception {
 		File imageFile = (File)object.getData() ;
 		object.setLength((int)imageFile.length());
+		object.setTitle(imageFile.getPath()) ;
 		BufferedImage image = ImageIO.read(imageFile) ;
 		if(image!=null){
 			object.getProperty().put("width", String.valueOf(image.getWidth())) ;
