@@ -84,6 +84,7 @@ public class CrawlTaskHandler extends Handler{
 	public String rm(){
 		if(data!=null && data.getId()!=null){
 			GenDAO.clearByID(data.getId()) ;
+			GenDAO.sync();
 		}
 		return list();
 	}
