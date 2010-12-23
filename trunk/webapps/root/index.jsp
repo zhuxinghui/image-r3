@@ -34,11 +34,13 @@
 					
 					<div class="searchForm">
 						<div class="searchtext">请输入图片地址或检索关键词</div>
+						<form action="/search.rv" method="post">
 						<ul>
-							<li style="margin-top:2px;"><input type="text" title="paste URL here (page or image)" maxlength="100000" name="url" id="url_box" class="searchinput"></li>
+							<li style="margin-top:2px;"><input type="text" maxlength="100000" name="q" id="url_box" class="searchinput"></li>
 							<li style="margin-left:10px;"><input type="image" type="submit" src="images/searchbtn.png"></li>
 							<li style="margin-left:10px;"><input type="image" type="submit" src="images/searchbtn.png"></li>
 						</ul>
+						</form>
 						<div style="clear:both;"></div>
 						<div class="searchtip">检索关键词或图片地址，例如：圣诞，http://www.domain.com/logo.gif , 或上传一副本地图片</div>
 					</div>
