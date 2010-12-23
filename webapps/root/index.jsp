@@ -35,7 +35,7 @@
 					<div class="searchForm">
 						<div class="searchtext">请输入图片地址或检索关键词</div>
 						<form action="/search.rv" method="get">
-						<input type="hidden" name="ps" value="20"/>
+						<input type="hidden" name="ps" value="100"/>
 						<ul>
 							<li style="margin-top:2px;"><input type="text" maxlength="100000" name="q" id="url_box" class="searchinput"></li>
 							<li style="margin-left:10px;"><input type="image" type="submit" src="images/searchbtn.png"></li>
