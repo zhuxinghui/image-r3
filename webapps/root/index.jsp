@@ -11,6 +11,7 @@
 		<meta http-equiv="Cache-Control" content="no-store">   
 		<meta http-equiv="Pragma" content="no-cache">  
 		<LINK href="css/css.css" type=text/css rel=stylesheet>
+		<title>开源图像搜索引擎，IMAGE-R3</title>
 	</head>
 	<body>
 		<div class="header_container">
