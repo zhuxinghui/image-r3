@@ -39,8 +39,10 @@
 			</div>
 			<ul class="imagePanel">
 				<li class="leftPanel">
+					<s:if test="img!=null">
 					<img src="/images/1.jpg" class="image">
 					<div style="color:#cccccc;text-align:center;">gif,1024*768,124K</div>
+					</s:if>
 					<div style="margin-top:20px;font-size:15px;text-align:right;">
 						<ul>
 							<li style="font-weight:bold;">排序方式</li>
@@ -49,8 +51,12 @@
 						</ul>
 					</div>
 				</li>
-				<li class="rightPanel">
-					
+				<li class="rightPanel" style="margin:10px 0 0 0px;">
+					<ul class="imageRightPanel">
+						<s:iterator value="result.docList">
+						<li><img src="<s:property value='path'/>/<s:property value='get("id")'/>.png"><s:property value="get('title')"/></li>
+						</s:iterator>
+					</ul>
 				</li>
 			</ul>
 			</div>
