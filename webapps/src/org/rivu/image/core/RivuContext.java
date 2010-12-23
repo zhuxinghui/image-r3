@@ -14,7 +14,9 @@ public class RivuContext {
 	public static boolean jobChange = false ;
 	private static String contextPath ;
 	public static String SAVE_FILE_DIR ;
+	public static String SAVE_DB_DIR ;
 	public static String FILE_URL = "/upload/data";
+	public static String FILE_DB_URL = "/upload";
 	private static org.apache.solr.core.SolrCore core = null ;
 	private static org.apache.solr.client.solrj.embedded.EmbeddedSolrServer server ;
 	

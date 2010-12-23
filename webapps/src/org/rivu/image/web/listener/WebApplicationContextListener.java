@@ -17,6 +17,9 @@
  */
 package org.rivu.image.web.listener;
 
+import java.io.File;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.ServletContextEvent;
@@ -38,7 +41,13 @@ public class WebApplicationContextListener implements HttpSessionListener,
 */
 public void contextInitialized(ServletContextEvent sce) {
 		RivuContext.setContextPath(sce.getServletContext().getRealPath(""));
+		Logger.getAnonymousLogger().info(GenDAO.class.getName());
 		RivuContext.SAVE_FILE_DIR = sce.getServletContext().getRealPath(RivuContext.FILE_URL) ;
+		RivuContext.SAVE_DB_DIR = sce.getServletContext().getRealPath(RivuContext.FILE_DB_URL) ;
+		File file = new File(RivuContext.SAVE_DB_DIR ,"db") ;
+		if(!file.exists()){
+			file.mkdirs() ;
+		}
 	}
 	
 	public void sessionCreated(HttpSessionEvent arg0) {
