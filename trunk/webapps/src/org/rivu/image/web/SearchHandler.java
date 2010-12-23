@@ -79,6 +79,8 @@ public class SearchHandler extends Handler{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}else{
+			return Action.INPUT ;
 		}
 		return Action.SUCCESS ;
 	}
@@ -91,7 +93,7 @@ public class SearchHandler extends Handler{
 	@SuppressWarnings("unchecked")
 	public String search() throws IOException{
 		if(q==null || q.equals("")){
-			return super.sendError("搜索请求无效，请输入搜索关键词.") ;
+			return Action.INPUT ;
 		}
 		SolrQuery query = new SolrQuery(); 
 		
