@@ -8,6 +8,7 @@
 	<package name="rivulet-default"  extends="struts-default">
 		<interceptors>
 			<interceptor name="service" class="org.rivu.image.web.servlet.ServletInterceptor"/>
+		
 			<!-- Sample i18n stack -->
 			<interceptor-stack name="rivuletStack">
 				<interceptor-ref name ="fileUploadStack" /> 
@@ -33,7 +34,6 @@
 		<action name="task" class="org.rivu.image.web.CrawlTaskHandler" method="add">
 			<result>/pages/taskList.jsp</result>
 		</action>
-
 		<action name="search" class="org.rivu.image.web.SearchHandler" method="execute">
 			<result>/search/result.jsp</result>
 		</action>
