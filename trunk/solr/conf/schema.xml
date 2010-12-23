@@ -428,11 +428,14 @@
 
    <field name="id" type="string" indexed="true" stored="true" required="true" /> 
    <field name="title" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="pagetitle" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="site" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="datatype" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="size" type="int" indexed="true" stored="true" multiValued="true"/>
    <field name="width" type="int" indexed="true" stored="true" multiValued="true"/>
    <field name="height" type="int" indexed="true" stored="true" multiValued="true"/>
    <field name="taskid" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="url" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="dsc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="dcl" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="deh" type="string" indexed="true" stored="true" multiValued="true"/>
