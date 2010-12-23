@@ -6,6 +6,16 @@
 <struts>
 	<constant name="struts.custom.i18n.resources" value="applicationResource"></constant>
 	<package name="rivulet-default"  extends="struts-default">
+		<interceptors>
+			<interceptor name="service" class="org.rivu.image.web.servlet.ServletInterceptor"/>
+			<!-- Sample i18n stack -->
+			<interceptor-stack name="rivuletStack">
+				<interceptor-ref name ="fileUploadStack" /> 
+				<interceptor-ref name="service"/>				
+				<interceptor-ref name="basicStack"/>
+			</interceptor-stack>	
+		</interceptors>		
+		<default-interceptor-ref name="rivuletStack"/>
 		<global-results>
 			<result name="login" type="redirect">/login.jsp</result> 
 		</global-results>	
@@ -22,6 +32,10 @@
 		</action>
 		<action name="task" class="org.rivu.image.web.CrawlTaskHandler" method="add">
 			<result>/pages/taskList.jsp</result>
+		</action>
+
+		<action name="search" class="org.rivu.image.web.SearchHandler" method="execute">
+			<result>/search/result.jsp</result>
 		</action>
 	</package>
 </struts>
